@@ -1,9 +1,13 @@
 #!/bin/bash -x
 
-firstNamePattern="^[A-Z]{1}[a-zA-Z]{2,}$";
+namePattern="^[A-Z]{1}[a-zA-Z]{2,}$";
 
 takeInputForFirstName () {
 	read -p "ENTER FIRST NAME : " firstName;
+}
+
+takeInputForLastName () {
+   read -p "ENTER LAST NAME : " lastName;
 }
 
 validate () {
@@ -21,7 +25,9 @@ validate () {
 
 userRegistrationMain () {
 	takeInputForFirstName;
-	validate $firstName $firstNamePattern "FIRST NAME";
+	validate $firstName $namePattern "FIRST NAME";
+	takeInputForLastName;
+	validate $lastName $namePattern "LAST NAME";
 }
 
 userRegistrationMain;
