@@ -3,6 +3,7 @@
 namePattern="^[A-Z]{1}[a-zA-Z]{2,}$";
 emailPattern="^[a-zA-Z]{1}[a-zA-Z0-9]*([-.+_]{1}[a-zA-Z0-9]+)?[@]{1}[a-zA-Z0-9]+[.]{1}[a-z]{2,4}([.][a-z]{2})?$";
 phoneNumberPattern="^[6-9]{1}[0-9]{1}[[:space:]]{1}[0-9]{10}$";
+passwordForSpecialCharacter=".[@#$&*_+-]{1}.";
 
 takeInputForFirstName () {
 	read -p "ENTER FIRST NAME : " firstName;
@@ -38,7 +39,7 @@ validate () {
 }
 
 validateForPassword () {
-	if [[ $password =~ [[:upper:]] &&  $password =~ [[:digit:]] && ${#password} -ge 8 ]]
+	if [[ $password =~ [[:upper:]] &&  $password =~ [[:digit:]] && $password =~ $passwordForSpecialCharacter && ${#password} -ge 8 ]]
 	then
 		echo "VALID PASSWORD";
 	else
