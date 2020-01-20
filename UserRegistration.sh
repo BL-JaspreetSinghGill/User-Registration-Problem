@@ -38,7 +38,7 @@ validate () {
 }
 
 validateForPassword () {
-	if [[ $password =~ [[:upper:]] && ${#password} -ge 8 ]]
+	if [[ $password =~ [[:upper:]] &&  $password =~ [[:digit:]] && ${#password} -ge 8 ]]
 	then
 		echo "VALID PASSWORD";
 	else
