@@ -3,7 +3,6 @@
 namePattern="^[A-Z]{1}[a-zA-Z]{2,}$";
 emailPattern="^[a-zA-Z]{1}[a-zA-Z0-9]*([-.+_]{1}[a-zA-Z0-9]+)?[@]{1}[a-zA-Z0-9]+[.]{1}[a-z]{2,4}([.][a-z]{2})?$";
 phoneNumberPattern="^[6-9]{1}[0-9]{1}[[:space:]]{1}[0-9]{10}$";
-passwordPattern="^[a-zA-Z0-9]{8,}$";
 
 takeInputForFirstName () {
 	read -p "ENTER FIRST NAME : " firstName;
@@ -38,6 +37,15 @@ validate () {
 	fi;
 }
 
+validateForPassword () {
+	if [[ $password =~ [[:upper:]] && ${#password} -ge 8 ]]
+	then
+		echo "VALID PASSWORD";
+	else
+		echo "INVALID PASSWORD";
+	fi;
+}
+
 userRegistrationMain () {
 	takeInputForFirstName;
 	validate $firstName $namePattern "FIRST NAME";
@@ -48,7 +56,7 @@ userRegistrationMain () {
 	takeInputForPhoneNumber;
 	validate "$phoneNumber" "$phoneNumberPattern" "PHONE NUMBER";
 	takeInputForPassword;
-	validate $password $passwordPattern "PASSWORD";
+	validateForPassword;
 }
 
 userRegistrationMain;
